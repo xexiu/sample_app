@@ -23,4 +23,9 @@ RSpec.describe PagesController, :type => :controller do
     end
   end
 
+  it "Should have the right title" do
+    get :home
+    expect(response).should have_selector("title", :content => "Ruby on Rails Sample App | Home")
+  end
+
 end
