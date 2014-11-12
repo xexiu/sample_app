@@ -10,6 +10,7 @@ group :test do
   gem 'rspec'
   gem 'webrat'
   gem 'spork-rails'
+  # gem "capybara", "~> 2.0.2"
 end
 gem 'sqlite3'
 # Use SCSS for stylesheets
