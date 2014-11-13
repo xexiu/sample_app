@@ -4,13 +4,16 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
 group :development do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.0.0'
 end
 group :test do
-  gem 'rspec'
+  gem 'rspec-rails', '~> 3.0.0'
   gem 'webrat'
   gem 'spork-rails'
   # gem "capybara", "~> 2.0.2"
+end
+group :development, :test do
+  gem 'pry-nav'
 end
 gem 'sqlite3'
 # Use SCSS for stylesheets
