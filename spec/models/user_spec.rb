@@ -31,4 +31,10 @@ RSpec.describe User, :type => :model do
     expect(no_email_user).to_not be_valid
   end
 
+  it "should reject names that are too long" do
+    long_name = "a" * 51
+    long_name_user = User.new(@attr.merge(:name => long_name))
+    expect(long_name_user).to_not be_valid
+  end
+
 end
