@@ -10,7 +10,7 @@ group :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'webrat'
   gem 'spork-rails'
-  # gem "capybara", "~> 2.0.2"
+  gem "capybara"
 end
 group :development, :test do
   gem 'pry-nav'
