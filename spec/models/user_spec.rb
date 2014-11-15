@@ -62,4 +62,11 @@ RSpec.describe User, :type => :model do
     expect(user_with_duplicate_email).to_not be_valid
   end
 
+  it "should reject email addresses identical up to case" do
+    upcased_email = @attr[:email].upcase
+    User.create!(@attr.merge(:email => upcased_email))
+    user_with_duplicate_email = User.new(@attr)
+    expect(user_with_duplicate_email).to_not be_valid
+  end
+
 end
