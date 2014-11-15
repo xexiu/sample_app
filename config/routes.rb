@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/contact' => 'pages#contact'
   get '/about' => 'pages#about'
   get '/help' => 'pages#help'
+  get '/signup' => 'users#new'
   root :to => 'pages#home'
 
   # The priority is based upon order of creation: first created -> highest priority.
