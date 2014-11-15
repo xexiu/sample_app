@@ -37,4 +37,22 @@ RSpec.describe User, :type => :model do
     expect(long_name_user).to_not be_valid
   end
 
+  it "should accept valid email addresses" do
+    addresses = %w[user@foo.com THE_USER@foo.bar.org first.last@foo.jp]
+    addresses.each do
+      |address|
+      valid_email_user = User.new(@attr.merge(:email => address))
+      expect(valid_email_user).to be_valid
+    end
+  end
+
+  it "should reject invalid email addresses" do
+    addresses = %w[user@foo,com user_at_foo.org example.user@foo.]
+    addresses.each do
+      |address|
+      invalid_email_user = User.new(@attr.merge(:email => address))
+      expect(invalid_email_user).to_not be_valid
+    end
+  end
+
 end
