@@ -26,4 +26,9 @@ RSpec.describe User, :type => :model do
     expect(no_name_user).to_not be_valid
   end
 
+  it "should require an email address" do
+    no_email_user = User.new(@attr.merge(:email => ""))
+    expect(no_email_user).to_not be_valid
+  end
+
 end
