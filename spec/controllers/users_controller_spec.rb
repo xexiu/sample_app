@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe UsersController, :type => :controller do
+render_views
 
   describe "GET new" do
     it "returns http success" do
