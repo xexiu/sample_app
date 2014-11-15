@@ -55,4 +55,11 @@ RSpec.describe User, :type => :model do
     end
   end
 
+  it "should reject duplicate email addresses" do
+    # Put a user with given email address into the database.
+    User.create!(@attr)
+    user_with_duplicate_email = User.new(@attr)
+    expect(user_with_duplicate_email).to_not be_valid
+  end
+
 end
