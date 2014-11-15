@@ -9,8 +9,21 @@
 #  updated_at :datetime
 #
 
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe User, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  before(:each) do
+    @attr = { :name => "Example User", :email => "user@example.com" }
+  end
+
+  it "should create a new instance given valid attributes" do
+    User.create!(@attr)
+  end
+
+  it "should require a name" do
+    no_name_user = User.new(@attr.merge(:name => ""))
+    expect(no_name_user).to_not be_valid
+  end
+
 end
