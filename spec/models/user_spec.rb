@@ -27,29 +27,35 @@ RSpec.describe User, :type => :model do
 
   describe "password validations" do
     it "should require a password" do
-      User.new(@attr.merge(:password => "", :password_confirmation => "")).
-      to_not be_valid
+      user_pass = User.new(@attr.merge(:password => "", :password_confirmation => ""))
+      expect(user_pass).to_not be_valid
     end
 
     it "should require a matching password confirmation" do
-      User.new(@attr.merge(:password_confirmation => "invalid")).
-      to_not be_valid
+      user_pass_confirm = User.new(@attr.merge(:password_confirmation => "invalid"))
+      expect(user_pass_confirm).to_not be_valid
     end
 
     it "should reject short passwords" do
       short = "a" * 5
       hash = @attr.merge(:password => short, :password_confirmation => short)
-      User.new(hash).to_not be_valid
+      user_hash_short = User.new(hash)
+      expect(user_hash_short).to_not be_valid
     end
 
     it "should reject long passwords" do
       long = "a" * 41
       hash = @attr.merge(:password => long, :password_confirmation => long)
-      User.new(hash).to_not be_valid
+      user_hash_long = User.new(hash)
+      expect(user_hash_long).to_not be_valid
+    end
+
+    before(:each) do
+      @user = User.create!(@attr)
     end
 
     it "should have an encrypted password attribute" do
-      @user.to respond_to(:encrypted_password)
+      expect(@user).to respond_to(:encrypted_password)
     end
   end
 
