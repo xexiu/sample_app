@@ -3,21 +3,23 @@ require 'spec_helper'
 RSpec.describe UsersController, :type => :controller do
   render_views
 
-  describe "GET 'show'" do
-    before(:each) do
-      @user = FactoryGirl.create(:user)
-    end
+  # =============================================
 
-    it "should be successful" do
-      get :show, :id => @user
-      expect(response).to be_success
-    end
+  # describe "GET 'show'" do
+  #   before(:each) do
+  #     @user = FactoryGirl.create(:user)
+  #   end
 
-    it "should find the right user" do
-      get :show, :id => @user
-      assigns(:user).should == @user
-    end
-  end
+  #   it "should be successful" do
+  #     get :show, :id => @user
+  #     expect(response).to be_success
+  #   end
+
+  #   it "should find the right user" do
+  #     get :show, :id => @user
+  #     assigns(:user).should == @user
+  #   end
+  # end
 
   # ====================================================
   # describe "GET new" do
