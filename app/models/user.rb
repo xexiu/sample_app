@@ -9,8 +9,10 @@
 #  updated_at :datetime
 #
 
+require 'digest'
+
 class User < ActiveRecord::Base
-  attr_accessor :password, :salt
+  attr_accessor :password
   validates :name,
             :presence => true,
             :length => { :maximum => 50 }
