@@ -10,6 +10,7 @@ group :test do
   gem 'webrat'
   gem 'spork-rails'
   gem "capybara"
+  gem 'factory_girl_rails'
 end
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
