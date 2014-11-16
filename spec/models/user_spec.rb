@@ -57,6 +57,10 @@ RSpec.describe User, :type => :model do
     it "should have an encrypted password attribute" do
       expect(@user).to respond_to(:encrypted_password)
     end
+
+    it "should set the encrypted password" do
+      expect(@user.encrypted_password).to_not be_blank
+    end
   end
 
   # describe "name and email validations" do
