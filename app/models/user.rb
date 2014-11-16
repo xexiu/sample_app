@@ -24,6 +24,11 @@ class User < ActiveRecord::Base
             :length => { :within => 6..40 }
   before_save :encrypt_password
 
+  def has_password?(submitted_password)
+    # Compare encrypted_password with the encrypted version of
+    # submitted_password.
+  end
+
 private
   def encrypt_password
     self.encrypted_password = encrypt(password)

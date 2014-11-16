@@ -25,6 +25,22 @@ RSpec.describe User, :type => :model do
       User.create!(@attr)
   end
 
+  describe "password encryption" do
+    before(:each) do
+      @user = User.create!(@attr)
+    end
+
+    describe "has_password? method" do
+      it "should be true if the passwords match" do
+        expect(@user.has_password?(@attr[:password])).to be_true
+      end
+
+      it "to be false if the passwords don't match" do
+        expect(@user.has_password?("invalid")).to be_false
+      end
+    end
+  end
+
   describe "password validations" do
     it "should require a password" do
       user_pass = User.new(@attr.merge(:password => "", :password_confirmation => ""))
