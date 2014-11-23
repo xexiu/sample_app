@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :users
+  resources :sessions, :only => [:new, :create, :destroy]
+  match '/signup',  :to => 'users#new', via: 'get'
+  match '/signin',  :to => 'sessions#new', via: 'get'
+  match '/signout', :to => 'sessions#destroy', via: 'delete'
+  get 'sessions/new'
 
   # get 'pages/home'
   # get 'pages/contact'
@@ -11,9 +17,6 @@ Rails.application.routes.draw do
   # get '/signup' => 'users#new'
   # get 'users/new'
   root :to => 'pages#home'
-
-  resources :users
-  get '/signup' => 'users#new'
   # get '/show/:id' => 'users#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
