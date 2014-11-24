@@ -154,3 +154,8 @@ div.field, div.actions {
   padding: 5px;
   color: white;
 }
+.flash-notice {
+  background-color: lightgreen;
+  padding: 5px;
+  color: white;
+}
