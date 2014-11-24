@@ -159,3 +159,9 @@ div.field, div.actions {
   padding: 5px;
   color: black;
 }
+ul.users {
+  margin-top: 1em;
+}
+.users li {
+  list-style:none;
+}
