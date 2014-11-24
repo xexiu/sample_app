@@ -1,5 +1,5 @@
 class Micropost < ActiveRecord::Base
-  attr_accessor :content
+  # attr_accessor :content
   belongs_to :user
   default_scope { order('microposts.created_at DESC') }
   # From Newest to Oldest

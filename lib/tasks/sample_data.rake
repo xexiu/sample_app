@@ -29,3 +29,14 @@ namespace :db do
     admin.toggle!(:admin)
   end
 end
+
+namespace :db do
+  desc "Fill database with sample data"
+  task :populate => :environment do
+    User.all.each do |user|
+      50.times do
+        user.microposts.create!(:content => Faker::Lorem.sentence(3, true))
+      end
+    end
+  end
+end
