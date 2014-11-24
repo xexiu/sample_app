@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :microposts, :only => [:create, :destroy]
   get '/signup' => 'users#new'
   get '/signin' => 'sessions#new'
+  get 'users/:id/microposts' => 'microposts#index'
   delete '/signout' => 'sessions#destroy'
   # get 'sessions/new'
   # get 'pages/home'
