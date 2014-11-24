@@ -155,7 +155,7 @@ div.field, div.actions {
   color: white;
 }
 .flash-notice {
-  background-color: lightgreen;
+  background-color: yellow;
   padding: 5px;
-  color: white;
+  color: black;
 }
