@@ -9,6 +9,7 @@ before_filter :authenticate
       redirect_to root_path
       else
         flash[:error] = "Something went wrong!!"
+        @feed_items = []
         render 'pages/home'
     end
   end
