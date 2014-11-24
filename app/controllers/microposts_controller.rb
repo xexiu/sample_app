@@ -1,5 +1,6 @@
 class MicropostsController < ApplicationController
 before_filter :authenticate
+before_filter :authorized_user, :only => :destroy
 
   def create
     @micropost  = current_user.microposts.build(micropost_params)
@@ -15,10 +16,16 @@ before_filter :authenticate
   end
 
   def destroy
-
+    @micropost.destroy
+    redirect_to request.referer
   end
 
   private
+
+  def authorized_user
+    @micropost = Micropost.find(params[:id])
+    flash[:success] = "Micropost successfull deleted!"
+  end
 
   def micropost_params
     params.require(:micropost).permit(:content, :user_id)
