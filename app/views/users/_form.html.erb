@@ -1,0 +1,29 @@
+<%= form_for(@user) do |f| %>
+<%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, 'autofocus' => 'true' %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation, "Confirmation" %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+<% if signup_path %>
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+  <% else %>
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+  <% end %>
+<% end %>
