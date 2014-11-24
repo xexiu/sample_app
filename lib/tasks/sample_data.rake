@@ -6,7 +6,7 @@ namespace :db do
     User.create!(:name => "test",:email => "test@test.com",:password => "foobar",:password_confirmation => "foobar")
     99.times do |n|
       name  = Faker::Name.name
-      email = "test#{n+1}@test.com"
+      email = "test#{n+1}@test#{n+1}.com"
       password  = "foobar"
       User.create!(
         :name => name,
@@ -28,6 +28,15 @@ namespace :db do
       :password_confirmation => "foobar")
     admin.toggle!(:admin)
   end
+end
+
+def make_relationships
+  users = User.all
+  user  = users.first
+  following = users[1..50]
+  followers = users[3..40]
+  following.each { |followed| user.follow!(followed) }
+  followers.each { |follower| follower.follow!(user) }
 end
 
 namespace :db do
