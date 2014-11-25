@@ -12,6 +12,8 @@
 require 'digest'
 
 class User < ActiveRecord::Base
+  # scope :admin, where(:admin =>true)
+  # As a result of this scope, the code: User.admin, would return an array of all the site admins.
   attr_accessor :password
   has_many :microposts, :dependent => :destroy
   has_many :relationships, :foreign_key => "follower_id",:dependent => :destroy
@@ -62,8 +64,7 @@ class User < ActiveRecord::Base
   end
 
   def feed
-  # This is preliminary. See Chapter 12 for the full implementation.
-  Micropost.where("user_id = ?", id)
+    Micropost.from_users_followed_by(self)
   end
 
 private
